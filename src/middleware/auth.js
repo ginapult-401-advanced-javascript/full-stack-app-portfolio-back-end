@@ -1,4 +1,3 @@
-'use strict';
 // this middleware intercepts all the requests and runs it through auth - sits through every request that needs to be authenticated
 // it's checking auth headers  encrypted username passwords or JWT token
 // checks for auth credentials - main goal is checking for basic or bearer auth and capability
@@ -15,16 +14,16 @@ module.exports = (capability) => {
       let [authType, authString] = request.headers.authorization.split(/\s+/);
 
       switch (authType.toLowerCase()) {
-        case 'basic':
-          return _authBasic(authString);
-        case 'bearer':
-          return _authBearer(authString);
-        default:
-          return _authError();
+      case 'basic':
+        return _authBasic(authString);
+      case 'bearer':
+        return _authBearer(authString);
+      default:
+        return _authError();
       }
 
     } catch (error) {
-      _authError(error)
+      _authError(error);
     }
 
     function _authBasic(str) {
@@ -56,5 +55,5 @@ module.exports = (capability) => {
     function _authError() {
       next('Invalid User ID/Passworld');
     }
-  }
-}
+  };
+};

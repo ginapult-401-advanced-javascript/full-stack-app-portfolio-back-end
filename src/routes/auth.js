@@ -1,5 +1,3 @@
-'use strict';
-
 // purpose - handle per request what logic do I want to run
 // request - modify resource - router says I know - parse info, you're trying to xxx, I'll go to this route
 // now I'm going to run this logic
@@ -32,10 +30,10 @@ router.post('/signup', (request, response, next) => {
       response.cookie('auth', request.token);
       response.send(request.token);
     })
-    .catch(next)
+    .catch(next);
 });
 
-router.post('/signin', (request, response, next) => {
+router.post('/signin', auth, (request, response, next) => {
   response.set('token', request.token);
   response.cookie('auth', request.token);
   response.send(request.token);
