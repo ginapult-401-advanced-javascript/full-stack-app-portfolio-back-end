@@ -14,7 +14,7 @@
 // don't worry about expired tokens for now
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // eslint-disable-line
 
 const User = require('../models/user/schema.js');
 const auth = require ('../middleware/auth.js');
