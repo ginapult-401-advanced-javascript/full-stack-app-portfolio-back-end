@@ -53,4 +53,4 @@ authRouter.post('/key', auth(), (request, response, next) => {
   response.status(200).send(key);
 });
 
-module.exports = router;
+module.exports = authRouter;

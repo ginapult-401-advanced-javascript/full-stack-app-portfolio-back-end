@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = (request, response, next) => {
   // all functions that sit on express route get request, response, next
   // since it's a middleware, really use next, otherwise will hang

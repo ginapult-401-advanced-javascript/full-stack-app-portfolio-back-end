@@ -17,7 +17,7 @@ class DataModel {
     return this.schema.find(query);
   }
   post(record) {
-    let newRecord = new this.schema(record);
+    let newRecord = new this.Schema(record);
     return newRecord.save();
     // this is how you create a new instance of the new model and have it persist
     // all return promises so when call them, need async await or chain .then

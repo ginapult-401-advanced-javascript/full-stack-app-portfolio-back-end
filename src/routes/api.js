@@ -2,6 +2,7 @@ const express = require('express');
 // use model-finder middleware to import models
 const modelFinder = require('../middleware/model-finder.js');
 const auth = require('../middleware/auth.js');
+// eslint-disable-next-line new-cap
 const router = express.Router();
 
 // if a specific paramter with which to run our middleware
