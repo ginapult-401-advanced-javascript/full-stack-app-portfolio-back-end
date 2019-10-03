@@ -1,3 +1,6 @@
-'use strict';
+const schema = require('./schema.js');
+const MongooseModel = require('../mongoose-model.js');
 
-const schema = require
+class Todos extends MongooseModel { }
+
+module.exports = new Todos(schema);
