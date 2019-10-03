@@ -18,6 +18,7 @@ const router = express.Router(); // eslint-disable-line
 
 const User = require('../models/user/schema.js');
 const auth = require ('../middleware/auth.js');
+const oauth = require('');
 
 // no auth for sign up - just creating a user on our system, make a new user
 router.post('/signup', (request, response, next) => {
