@@ -7,7 +7,7 @@ const cors = require('cors');
 
 // custom middleware?
 const errorHandler = require('./middleware/server-error.js');
-const notFound = require('./middleware/not-found.js');
+const notFoundHandler = require('./middleware/not-found.js');
 
 // Routes? What are they going to do? (Controllers)
 const authRouter = require('./routes/auth.js');
@@ -26,11 +26,13 @@ app.use(morgan('dev'));
 // logging
 app.use(express.json());
 // this allows header (content-type: application.json) - says the form we're sending is json - whenever somethign sends json i want you to put it on the request body
+app.use(express.urlencoded({ extended: true }));
 
+//Actual Routes
 app.use(authRouter);
 app.use(apiRouter);
 
-app.use('*', notFound);
+app.use('*', notFoundHandler);
 app.use(errorHandler);
 
 module.exports = {
@@ -39,4 +41,4 @@ module.exports = {
     let PORT = port || process.env.PORT || 8080;
     app.listen(PORT, () => console.log(`Good to go! Listening on ${PORT}`));
   },
-}
+};

@@ -5,8 +5,6 @@
 // class that encapsulates a mongoose model - now we can use
 // full CRUD
 
-'use strict';
-
 class DataModel {
   constructor(schema) {
     this.schema = schema;
@@ -26,7 +24,7 @@ class DataModel {
   }
   put(id, record) {
     const filter = { _id: id };
-    cosnt update = record;
+    const update = record;
 
     return this.schema.findOneAndUpdate(filter, update);
   }

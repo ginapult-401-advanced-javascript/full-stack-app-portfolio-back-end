@@ -1,10 +1,7 @@
-
-
 const express = require('express');
-const authRouter = express.Router();
+// use model-finder middleware to import models
 const modelFinder = require('../middleware/model-finder.js');
 const auth = require('../middleware/auth.js');
-
 const router = express.Router();
 
 // if a specific paramter with which to run our middleware
@@ -18,7 +15,7 @@ router.param('model', modelFinder);
 router.get('/api/v1/:model', /** Handlers go here */handleGetAll);
 router.get('/api/v1/:model/:id', handleGetOne);
 
-router.post('/api/v1/:model/', auth(), handlePost);
+router.post('/api/v1/:model/', handlePost);
 router.put('/api/v1/:model/:id', handlePut);
 router.delete('/api/v1/:model/:id', handleDelete);
 // mongoosde - model.find, model.create, model.update corresponds
@@ -59,7 +56,9 @@ function handlePut(request, response, next) {
 function handleDelete(request, response, next) {
   const id = request.params.id;
   request.model.delete(id)
-    .then((result) => response.status = 204 )//http code success but nothing to return
+    .then((result) => {
+      response.status = 204;
+    })
     .catch(next);
 }
 
