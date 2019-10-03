@@ -11,6 +11,7 @@ const notFound = require('./middleware/not-found.js');
 
 // Routes? What are they going to do? (Controllers)
 const authRouter = require('./routes/auth.js');
+const apiRouter = require('./routes/api.js');
 
 // Models? all the controller logic will be imported into our routing logic
 // Middlewares? What will sit between my routes and my models?
@@ -27,6 +28,8 @@ app.use(express.json());
 // this allows header (content-type: application.json) - says the form we're sending is json - whenever somethign sends json i want you to put it on the request body
 
 app.use(authRouter);
+app.use(apiRouter);
+
 app.use('*', notFound);
 app.use(errorHandler);
 

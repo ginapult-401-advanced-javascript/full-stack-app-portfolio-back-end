@@ -1,5 +1,4 @@
 // our entry file - configures and starts a server - kicks off our application - something node can grab and do all the things we programmed
-'use strict'
 
 require('dotenv').config();
 const server = require('./src/app.js');
@@ -13,4 +12,4 @@ const mongooseOptions = {
 }
 
 mongoose.connect(process.env.MONGODB_URI, mongooseOptions);
-server.start();
+server.start(process.env.PORT);
