@@ -32,6 +32,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authRouter);
 app.use(apiRouter);
 
+app.get('/test', (req, res) => {
+  res.send('hiii');
+});
+
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 

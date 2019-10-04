@@ -1,5 +1,5 @@
 const superagent = require('superagent');
-const Users = require('../../model/user/schema.js');
+const Users = require('../../models/user/schema.js');
 
 const authorize = (request) => {
   let code = request.query.code;
