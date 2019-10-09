@@ -1,6 +1,6 @@
 const schema = require('./schema.js');
 const MongooseModel = require('../mongoose-model.js');
 
-class Todos extends MongooseModel { }
+class Projects extends MongooseModel { }
 
-module.exports = new Todos(schema);
+module.exports = new Projects(schema);

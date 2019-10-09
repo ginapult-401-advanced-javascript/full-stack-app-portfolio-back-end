@@ -1,41 +1,26 @@
-// app.js brings everything together
 const express = require('express');
 
 // app level middleware libraries
 const morgan = require('morgan');
 const cors = require('cors');
 
-// custom middleware?
+// custom middleware
 const errorHandler = require('./middleware/server-error.js');
 const notFoundHandler = require('./middleware/not-found.js');
 
-// Routes? What are they going to do? (Controllers)
-const authRouter = require('./routes/auth.js');
-const apiRouter = require('./routes/api.js');
+// routers
+const projectRouter = require('./routes/projects.js');
 
-// Models? all the controller logic will be imported into our routing logic
-// Middlewares? What will sit between my routes and my models?
-
-// middlewares, routes, and models will have own direcctories
-
+// instantiate express
 const app = express();
 
 app.use(cors());
-// cross origin communication
 app.use(morgan('dev'));
-// logging
 app.use(express.json());
-// this allows header (content-type: application.json) - says the form we're sending is json - whenever somethign sends json i want you to put it on the request body
 app.use(express.urlencoded({ extended: true }));
 
 //Actual Routes
-app.use(authRouter);
-app.use(apiRouter);
-
-app.get('/test', (req, res) => {
-  res.send('hiii');
-});
-
+app.use(projectRouter);
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
